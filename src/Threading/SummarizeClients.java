@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.Future;
 public final class SummarizeClients {
-//    public static void main(String[] args) throws Exception{
-//
+    public static void main(String[] args) throws Exception{
+
 //        List<UdacisearchClient> clients = ClientStore.getClients();
 //        int numClients = clients.size();
 //
@@ -25,5 +25,5 @@ public final class SummarizeClients {
 //                        .orElse(0));
 //
 //        Future<>
-//    }
+    }
 }
