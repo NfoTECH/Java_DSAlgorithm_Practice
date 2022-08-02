@@ -6,7 +6,8 @@ public class ReverseNumberAsString {
 
     public static int sortDesc(final int num) {
         StringBuilder reversedWord = new StringBuilder();
-        String[] numArray = Integer.toString(num).split("");
+        String[] numArray = String.valueOf(num).split("");
+        //String[] numArray = Integer.toString(num).split("");
         Arrays.sort(numArray);
 
         for (int i = numArray.length - 1; i >= 0; i--) {
