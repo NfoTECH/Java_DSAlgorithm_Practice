@@ -35,9 +35,9 @@ public class ReversingAString {
         String inputString = "Another reversal using for loop";
         System.out.println(inputString);
         char[] inArray = inputString.toCharArray();
-        String output = "";
+        StringBuilder output = new StringBuilder();
         for (int i = inArray.length - 1; i >= 0; i --) {
-            output += inArray[i];
+            output.append(inArray[i]);
         }
         System.out.println(output);
 

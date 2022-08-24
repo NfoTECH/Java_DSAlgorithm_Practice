@@ -7,7 +7,7 @@ public class ReverseWords {
     public static void main(String[] args) {
         String origin = "Reversing the individual words in a sentence";
 
-        System.out.println(origin.trim().isEmpty() ? origin : Arrays.stream(origin.split(" ")).map(word -> new StringBuilder(word).reverse().toString()).collect(Collectors.joining(" ")));
+        System.out.println(Arrays.stream(origin.split(" ")).map(word -> new StringBuilder(word).reverse().toString()).collect(Collectors.joining(" ")));
 
 
         // OR

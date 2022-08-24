@@ -8,7 +8,7 @@ public class ArrayConversion {
     private static int arrayConversion(ArrayList<Integer> integers) {
         int iteration = 1;                                  //to count how many times we repeated the process
         while (integers.size() != 1) {                      //if the size is equals to 1, we've reached the end and should return the first item
-            ArrayList<Integer> temp = new ArrayList<>();    //created to store consecutive additions or multiplications
+            ArrayList<Integer> temp = new ArrayList<>();  //created to store consecutive additions or multiplications
             if (iteration % 2 != 0) {                       //if we've done this an odd no of times i.e 1 or 3 or 5....
                 for (int i = 0; i < integers.size(); i++) {
                     temp.add(integers.get(i) + integers.get(i + 1));    //adding two consecutive numbers
