@@ -2,7 +2,6 @@ package assessmentDay;
 
 import java.util.Arrays;
 import java.util.List;
-
 public class AmazonWebServer {
     public static int findTotalPower(List<Integer> power) {
         // Write your code here
