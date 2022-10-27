@@ -1,5 +1,7 @@
 package assessmentDay;
 
+import java.util.Arrays;
+
 //Find a pattern in an image.
 //
 //        Rules
@@ -41,8 +43,6 @@ package assessmentDay;
 //        Victory Conditions
 //
 //        The pattern is indeed located at coordinates)
-
-import java.util.Arrays;
 
 public class ImagePattern2 {
     public static int[] solve(int imageWidth, int imageHeight, String[] image, int patternWidth, int patternHeight, String[] pattern) {

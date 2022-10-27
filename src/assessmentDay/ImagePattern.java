@@ -36,7 +36,7 @@ package assessmentDay;
 //
 //        if the pattern is present in the image the position as an array of 2 integers, representing the top-left corner of the first pattern, going from top to bottom and left to right
 //
-//        ⚫if the pattern is not present in the image. 11.11
+//        if the pattern is not present in the image. 11.11
 //
 //        Victory Conditions
 //
@@ -79,8 +79,4 @@ public class ImagePattern {
                 result[1] = -1;
                 return result;
             }
-
-
-
-
 }
