@@ -1,10 +1,14 @@
 package assessmentDay;
 
+import java.util.Scanner;
+
 //Order Colors
 //
 //        A strings contains a list of color names that are separated by a single space.
 //
-//        Colors in stare mixed up but each color has its original position at the end of the color name, positions are 1-indexed. For example, the string "black gold2 whi" can be rearranged to "gold2 black! while3" or "gold2 white black1" st contains only up to 9 colors
+//        Colors in stare mixed up but each color has its original position at the end of the color name, positions are 1-indexed.
+//        For example, the string "black gold2 white" can be rearranged to "gold2 black! while3" or "gold2 white black1"
+//        str contains only up to 9 colors
 //
 //        Given at with rearranged colors, sort the colors to the original state and return the original str
 //
@@ -31,8 +35,6 @@ package assessmentDay;
 //
 //        Color names in str are separated by a single space.
 //        str contains no leading or trailing spaces
-
-import java.util.Scanner;
 
 public class OrderColors {
     public static String orderColors(String s) {
