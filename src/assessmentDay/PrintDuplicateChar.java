@@ -1,7 +1,7 @@
 package assessmentDay;
 
 
-//Write an algorithm to confirm if there are character repetition and print the duplicate if available
+// Write an algorithm to confirm if there are character repetition and print the duplicate if available
 // A sample word is "School" Kindly implement the below functions
 // public boolean isDuplicateExisting (String word)
 // public void printDuplicate(String word)
