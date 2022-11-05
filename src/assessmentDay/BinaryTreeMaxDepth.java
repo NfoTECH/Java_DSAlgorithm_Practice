@@ -28,6 +28,9 @@ public class BinaryTreeMaxDepth {
     }
 
     class TreeNode {
+        int[] val1 = new int[10];
+        
+
         int val;
         TreeNode left;
         TreeNode right;
@@ -39,7 +42,7 @@ public class BinaryTreeMaxDepth {
     public static void main(String[] args) {
         BinaryTreeMaxDepth t = new BinaryTreeMaxDepth();
         TreeNode root = t.new TreeNode(3);
-        root.left = t.new TreeNode(9);
+        root.left =t.new TreeNode(9);
         root.right = t.new TreeNode(20);
         root.right.left = t.new TreeNode(15);
         root.right.right = t.new TreeNode(7);
