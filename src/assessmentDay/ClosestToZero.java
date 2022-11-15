@@ -10,9 +10,7 @@ public class ClosestToZero {
                 close = curr;
                 min = ints[i];
             }
-            if (curr == close && ints[i] > min) {
-                min = ints[i];
-            }
+            if (curr == close && ints[i] > min) min = ints[i];
         }
         return min;
     }
