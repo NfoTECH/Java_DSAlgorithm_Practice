@@ -1,16 +1,20 @@
 package assessmentDay;
 
 public class ClosestToZero {
-    public int closestToZero(int[] a) {
-        int min = Integer.MAX_VALUE;
-        int minIndex = -1;
-        for (int i = 0; i < a.length; i++) {
-            if (Math.abs(a[i]) < min) {
-                min = Math.abs(a[i]);
-                minIndex = i;
+    public int closestToZero(int[] ints) {
+        int close = Integer.MAX_VALUE;
+        int min = 0;
+        for (int i = 0; i < ints.length; i++) {
+            int curr = Math.abs(ints[i] - 0);
+            if (curr < close) {
+                close = curr;
+                min = ints[i];
+            }
+            if (curr == close && ints[i] > min) {
+                min = ints[i];
             }
         }
-        return a[minIndex];
+        return min;
     }
 
     public static void main(String[] args) {
