@@ -56,7 +56,7 @@ public class ImagePattern2 {
                         return result;
                     }
                     if (patternHeight == 1) {
-                        if (image[i].substring(j, j + patternWidth).equals(pattern[0])) {
+                        if (image[i].substring(i, j + patternWidth).equals(pattern[0])) {
                             result[0] = j;
                             result[1] = i;
                             return result;
@@ -74,15 +74,17 @@ public class ImagePattern2 {
                         }
                     }
                     if (patternHeight > 1 && patternWidth > 1) {
-                        String[] subImage = new String[patternHeight];
-                        for (int k = 0; k < patternHeight; k++) {
-                            subImage[k] = image[i + k].substring(j, j + patternWidth);
-                        }
-                        if (Arrays.equals(subImage, pattern)) {
-                            result[0] = j;
-                            result[1] = i;
-                            return result;
-                        }
+                       if (i + patternHeight <= imageHeight && j + patternWidth <= imageWidth) {
+                           String[] subImage = new String[patternHeight];
+                           for (int k = 0; k < patternHeight; k++) {
+                               subImage[k] = image[i + k].substring(j, j + patternWidth);
+                           }
+                           if (Arrays.equals(subImage, pattern)) {
+                               result[0] = j;
+                               result[1] = i;
+                               return result;
+                           }
+                       }
                     }
                 }
             }
