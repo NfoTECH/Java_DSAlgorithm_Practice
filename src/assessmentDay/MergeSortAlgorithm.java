@@ -1,5 +1,7 @@
 package assessmentDay;
 
+//Time Complexity – O((m+n) log(m+n))
+//Space Complexity – O(m+n)
 
 public class MergeSortAlgorithm {
     public static int[] mergeSort(int[] arr1, int[] arr2) {
