@@ -51,7 +51,7 @@ package assessmentDay;
 //
 //        System out printint This prints to the console when you return
 
-public class codewriting {
+public class SoldierWarriorNinja {
     String[] solution(int[] points) {
         // write your code in Java SE 8
         int recruit = 0;
@@ -84,9 +84,9 @@ public class codewriting {
     }
 
     public static void main(String[] args) {
-        codewriting codewriting = new codewriting();
+        SoldierWarriorNinja SoldierWarriorNinja = new SoldierWarriorNinja();
         int[] points = {999,4999,9999,49999,50000};
-        String[] result = codewriting.solution(points);
+        String[] result = SoldierWarriorNinja.solution(points);
         for (int i = 0; i < result.length; i++) {
             System.out.println(result[i]);
         }
