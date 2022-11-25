@@ -107,6 +107,20 @@ public class ChatOverloading {
         }
     }
 
+    public void printConversation(){
+        System.out.println(String.format("Total number of members in the conversation are %d", members.size()));
+        System.out.println(String.format("The names of these members are %s", String.join(" ", members)));
+        System.out.println(String.format("Total number of files in the conversation are %d", files.size()));
+        System.out.print("The messages in the conversation are ");
+        String output ="";
+        for(String str: message.values()){
+            output +="'"+str+"' ";
+        }
+        output = output.trim();
+        System.out.print(output);
+    }
+
+
     public static void main(String[] args) {
         ChatOverloading chat = new ChatOverloading();
         chat.Chat();
