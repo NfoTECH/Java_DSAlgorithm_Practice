@@ -26,6 +26,7 @@ public class CheckTwins {
     public static void main(String[] args) {
         System.out.println(isTwin("Lookout", "Outlook"));
         System.out.println(isTwin("race", "care"));
+        System.out.println(isTwin("abc", "cba"));
     }
 
 }
