@@ -1,139 +1,136 @@
 package assessmentDay;
 
-//Chat Overloading
-//
-//        Function overloading or method overloading allows one to create multiple functions of the same name with different implementations.
-//
-//        Create a class named Chat.
-//
-//        Add the following variables:
-//
-//        1. List<String> members - A list of all members in the chat. 2. List<Integer> files- A list of all files in the chat.
-//
-//        3. HashMap<Integer, String> message - A list of all messages in the chat.
-//
-//        Add the following methods:
-//
-//        1. void Chat()- Initializes members, files, message.
-//
-//        2. Method add which has 3 variations, each with a return type void:
-//
-//        Variation 1 has a parameter String[] James. This copies the values from names to the list members.
-//
-//        • Variation 2 has a parameter int[] ids. This copies the values from
-//
-//        ids to the list files.
-//
-//        • Variation 3 has 2 parameters: int id and String newMessage This adds the key value pair <id, newMessage> to the map message
-//
-//        3. Method remove which has 3 variations, each with a return type void
-//
-//        ⚫ Variation 1 has a parameter String[] names. This removes all the values in names from the list members. If some name does not exist, print Member with name (name) does not exist.
-//
-//        Variation 2 has a parameter int] ids. This removes all the values in
-//
-//        If come does not exist, print "File with id (id)
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
-public class ChatOverloading {
-    private List <String> members;
-    private List <Integer> files;
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+import java.lang.reflect.Array;
+import java.util.stream.Collectors;
+/* model ouput for cut and paste
+Member with name __ does not exist
+File with id __ does not exist
+Message with id __ does not exist
+Total number of members in the conversation are __
+The names of these members are __
+Total number of files in the conversation are __
+The messages in the conversation are __
+*/
+class Chat {
+    private List<String> members;
+    private List<Integer> files;
     private HashMap<Integer, String> message;
 
-    public void Chat () {
-        //initializes members, files, message
+    public Chat(){
         members = new ArrayList<>();
         files = new ArrayList<>();
         message = new HashMap<>();
     }
-
-    public void add (String[] names) {
-        //copies the values from names to the list members
-        for (String name : names) {
-            members.add(name);
+    public void add(String[] names){
+        for (String str: names) {
+            members.add(str);
         }
     }
+//    public void add(String[] names){
+//        members.addAll(Arrays.asList(names));
+//    }
 
     public void add (int[] ids) {
-        //copies the values from ids to the list files
-        for (int id : ids) {
+        for(int id:ids){
             files.add(id);
         }
     }
 
     public void add (int id, String newMessage) {
-        //adds the key value pair <id, newMessage> to the map message
         message.put(id, newMessage);
     }
-
-    public void remove (String[] names) {
-        //removes all the values in names from the list members
-        for (String name : names) {
+    public void remove(String[] names){
+        for(String name: names){
             boolean isRemoved = members.remove(name);
-            if (!isRemoved) {
-                System.out.printf("Member with name %s does not exist%n", name);
+            if(!isRemoved){
+                System.out.println(String.format("Member with name %s does not exist", name));
             }
         }
     }
-
     public void remove (int[] ids) {
-        //removes all the values in ids from the list files
-        for (int id : ids) {
+        for (int id:ids) {
             int index = -1;
-            for (int i = 0; i < files.size(); i++) {
-                if (files.get(i) == id) {
-                    index = i;
+            for (int i =0; i<files.size(); i++) {
+                if (id == files.get(i)) {
+                    index=i;
                     break;
                 }
             }
-            if (index < 0) {
-                System.out.printf("File with id %d does not exist%n", id);
+            if (index <0 ){
+                System.out.println(String.format("File with id %d does not exist", id));
             } else {
                 files.remove(index);
             }
         }
     }
-
-    public void remove (int id) {
-        //removes the key value pair with key id from the map message
+    public void remove(int id) {
         if (message.containsKey(id)) {
             message.remove(id);
-        }
-        else {
-            System.out.printf("Message with id %d does not exist%n", id);
+        } else {
+            System.out.println(String.format("Message with id %d does not exist", id));
         }
     }
 
     public void printConversation(){
         System.out.println(String.format("Total number of members in the conversation are %d", members.size()));
-        System.out.println(String.format("The names of these members are %s", String.join(" ", members)));
+        System.out.println(String.format("The names of these members are "+ String.join(" ", members)));
         System.out.println(String.format("Total number of files in the conversation are %d", files.size()));
         System.out.print("The messages in the conversation are ");
-        String output ="";
-        for(String str: message.values()){
-            output +="'"+str+"' ";
+        String output = "";
+        for (String str : message.values()) {
+            output += "'" +str+ "' ";
         }
         output = output.trim();
         System.out.print(output);
     }
 
+}
 
-    public static void main(String[] args) {
-        ChatOverloading chat = new ChatOverloading();
-        chat.Chat();
-        chat.add(new String[]{"James", "John", "Mary"});
-        chat.add(new int[]{1, 2, 3});
-        chat.add(1, "Hello");
-        chat.add(2, "Hi");
-        chat.add(3, "How are you?");
-        chat.remove(new String[]{"John", "Mary"});
-        chat.remove(new int[]{1, 2});
-        chat.remove(3);
-        System.out.println(chat.members);
-        System.out.println(chat.files);
-        System.out.println(chat.message);
+class Solution {
+    public static void main(String args[] ) throws Exception {
+        Scanner sc = new Scanner(System.in);
+
+        String[] lineArray = sc.nextLine().split(" ");
+
+        Chat newChat = new Chat();
+        newChat.add(lineArray);
+
+        lineArray = sc.nextLine().split(" ");
+
+        int[] files = new int[lineArray.length];
+        for (int i=0; i < lineArray.length; i++) {
+            files[i] = Integer.parseInt(lineArray[i]);
+        }
+        newChat.add(files);
+
+        String line = sc.nextLine();
+        int numberOfMessages = Integer.parseInt(line);
+
+        for (int i=0; i < numberOfMessages; i++) {
+            line = sc.nextLine();
+            newChat.add(i, line);
+        }
+
+        lineArray = sc.nextLine().split(" ");
+        newChat.remove(lineArray);
+
+        lineArray = sc.nextLine().split(" ");
+        int[] filesRemoved = new int[lineArray.length];
+        for (int i=0; i < lineArray.length; i++) {
+            filesRemoved[i] = Integer.parseInt(lineArray[i]);
+        }
+        newChat.remove(filesRemoved);
+
+        lineArray = sc.nextLine().split(" ");
+        for (int i=0; i < lineArray.length; i++) {
+            newChat.remove(Integer.parseInt(lineArray[i]));
+        }
+
+        newChat.printConversation();
     }
 }
