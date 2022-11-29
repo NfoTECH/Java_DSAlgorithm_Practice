@@ -16,19 +16,21 @@ The names of these members are __
 Total number of files in the conversation are __
 The messages in the conversation are __
 */
+
+
 class Chat {
     private List<String> members;
     private List<Integer> files;
     private HashMap<Integer, String> message;
 
-    public Chat(){
+    public Chat() {
         members = new ArrayList<>();
         files = new ArrayList<>();
         message = new HashMap<>();
     }
-    public void add(String[] names){
-        for (String str: names) {
-            members.add(str);
+    public void add (String[] names){
+        for (String str : names) {
+            members.add (str);
         }
     }
 //    public void add(String[] names){
@@ -36,18 +38,18 @@ class Chat {
 //    }
 
     public void add (int[] ids) {
-        for(int id:ids){
-            files.add(id);
+        for (int id : ids){
+            files.add (id);
         }
     }
 
     public void add (int id, String newMessage) {
-        message.put(id, newMessage);
+        message.put (id, newMessage);
     }
-    public void remove(String[] names){
-        for(String name: names){
+    public void remove (String[] names){
+        for (String name : names){
             boolean isRemoved = members.remove(name);
-            if(!isRemoved){
+            if (!isRemoved) {
                 System.out.println(String.format("Member with name %s does not exist", name));
             }
         }
@@ -55,20 +57,20 @@ class Chat {
     public void remove (int[] ids) {
         for (int id:ids) {
             int index = -1;
-            for (int i =0; i<files.size(); i++) {
+            for (int i = 0; i < files.size(); i++) {
                 if (id == files.get(i)) {
-                    index=i;
+                    index = i;
                     break;
                 }
             }
-            if (index <0 ){
+            if (index < 0 ){
                 System.out.println(String.format("File with id %d does not exist", id));
             } else {
                 files.remove(index);
             }
         }
     }
-    public void remove(int id) {
+    public void remove (int id) {
         if (message.containsKey(id)) {
             message.remove(id);
         } else {
@@ -83,7 +85,7 @@ class Chat {
         System.out.print("The messages in the conversation are ");
         String output = "";
         for (String str : message.values()) {
-            output += "'" +str+ "' ";
+            output += "'" + str + "' ";
         }
         output = output.trim();
         System.out.print(output);
