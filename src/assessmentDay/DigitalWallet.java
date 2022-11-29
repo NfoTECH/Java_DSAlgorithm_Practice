@@ -18,28 +18,29 @@ package assessmentDay;
 //        In this challenge, you are building the digital waller workflow by writing the complete implementation of the following three classes:
 //
 //        The TransactionException class should plent The constructor TransactionExceptions
-public class DigitalWallet {
+
+
+class DigitalWallet {
     private String walletId;
     private String userName;
     private String userAccessCode;
     private int walletBalance;
 
-    public DigitalWallet(String walletId, String userName, String userAccessCode, int walletBalance) {
+    public DigitalWallet(String walletId, String userName) {
+        this.walletId = walletId;
+        this.userName = userName;
+    }
+    public DigitalWallet(String walletId, String userName, String userAccessCode) {
         this.walletId = walletId;
         this.userName = userName;
         this.userAccessCode = userAccessCode;
-        this.walletBalance = walletBalance;
     }
 
     public String getWalletId() {
         return walletId;
     }
 
-    public String getUserName() {
-        return userName;
-    }
-
-    public String getUserAccessCode() {
+    public String getUserAccessToken() {
         return userAccessCode;
     }
 
@@ -51,41 +52,39 @@ public class DigitalWallet {
         this.walletBalance = walletBalance;
     }
 
-    public void addMoney(int amount, String accessCode) throws TransactionException {
-        if (accessCode.equals(userAccessCode)) {
-            if (amount > 0) {
-                walletBalance += amount;
-            } else {
-                throw new TransactionException("INVALID AMOUNT", "Amount should be greater than zero");
+    class DigitalWalletTransaction {
+        public void addMoney(DigitalWallet digitalWallet, int amount) throws TransactionException {
+            if (digitalWallet.getUserAccessToken() == null) {
+                throw new TransactionException("User not authorized", "USER_NOT_AUTHORIZED");
             }
-        } else {
-            throw new TransactionException("USER NOT AUTHORIZED", "User not authorized");
+            if (amount <= 0) {
+                throw new TransactionException("Amount should be greater than zero", "INVALID_AMOUNT");
+            }
+            digitalWallet.setWalletBalance(amount);
+        }
+
+        public void payMoney (DigitalWallet digitalWallet, int amount) throws TransactionException {
+            if (digitalWallet.getUserAccessToken() == null) {
+                throw new TransactionException("User not authorized", "USER_NOT_AUTHORIZED");
+            }
+            if (amount <= 0) {
+                throw new TransactionException("Amount should be greater than zero", "INVALID_AMOUNT");
+            }
+            if (amount > digitalWallet.getWalletBalance()) {
+                throw new TransactionException("Insufficient balance", "INVALID_AMOUNT");
+            }
+            digitalWallet.setWalletBalance(amount);
         }
     }
 
-    public void payMoney(int amount, String accessCode) throws TransactionException {
-        if (accessCode.equals(userAccessCode)) {
-            if (amount > 0) {
-                if (walletBalance >= amount) {
-                    walletBalance -= amount;
-                } else {
-                    throw new TransactionException("INSUFFICIENT BALANCE", "Insufficient balance");
-                }
-            } else {
-                throw new TransactionException("INVALID AMOUNT", "Amount should be greater than zero");
-            }
-        } else {
-            throw new TransactionException("USER NOT AUTHORIZED", "User not authorized");
-        }
-    }
 
     class TransactionException extends Exception {
         private String errorCode;
         private String errorMessage;
 
-        public TransactionException(String errorCode, String errorMessage) {
-            this.errorCode = errorCode;
+        public TransactionException(String errorMessage, String errorCode) {
             this.errorMessage = errorMessage;
+            this.errorCode = errorCode;
         }
 
         public String getErrorCode() {
@@ -94,18 +93,6 @@ public class DigitalWallet {
 
         public String getErrorMessage() {
             return errorMessage;
-        }
-    }
-
-    public static void main(String[] args) {
-        DigitalWallet wallet = new DigitalWallet("WALLET001", "John Doe", "ACCESSCODE001", 1000);
-        try {
-            wallet.addMoney(500, "ACCESSCODE001");
-            System.out.println(wallet.getWalletBalance());
-            wallet.payMoney(2000, "ACCESSCODE001");
-            System.out.println(wallet.getWalletBalance());
-        } catch (TransactionException e) {
-            System.out.println(e.getErrorCode() + ": " + e.getErrorMessage());
         }
     }
 }
