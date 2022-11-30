@@ -44,7 +44,7 @@ package assessmentDay;
 //
 //        Insert a '(' 2 times at the beginning of the string to make it valid: "((0))"
 
-public class GetMin {
+public class GetMinOperations {
     public static int getMinOperations(String s) {
         int count = 0;
         int open = 0;
