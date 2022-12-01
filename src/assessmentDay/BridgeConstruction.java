@@ -1,6 +1,8 @@
 package assessmentDay;
 
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 //Bridge Construction
 //
@@ -44,26 +46,40 @@ import java.util.List;
 
 public class BridgeConstruction {
     public static int getMinTowers(List<Integer> X) {
-        int[] arr = new int[X.size()];
-        for (int i = 0; i < X.size(); i++) {
-            arr[i] = X.get(i);
-        }
-        int[] dp = new int[X.size()];
-        int max = 0;
-        for (int i = 0; i < X.size(); i++) {
-            dp[i] = 1;
-            for (int j = 0; j < i; j++) {
-                if (arr[j] >= arr[i]) {
-                    dp[i] = Math.max(dp[i], dp[j] + 1);
-                }
+        int max = 1;
+        Collections.sort(X);
+        int last = X.get(X.size() - 1);
+        for (int i = X.size() - 2; i >= 0; i--) {
+            if (last == 0) {
+                max++;
+                last = X.get(i);
+            } else {
+                last = X.get(i);
             }
-            max = Math.max(max, dp[i]);
         }
         return max;
     }
 
-
     public static void main(String[] args) {
-        System.out.println(getMinTowers(List.of(0,1,2,3,4)));
+        System.out.println(getMinTowers(List.of(0, 0, 10)));
+        System.out.println(getMinTowers(List.of(0, 1, 2, 3, 4)));
     }
 }
+
+
+//    int[] arr = new int[X.size()];
+//        for (int i = 0; i < X.size(); i++) {
+//        arr[i] = X.get(i);
+//        }
+//        int[] dp = new int[X.size()];
+//        int max = 0;
+//        for (int i = 0; i < X.size(); i++) {
+//        dp[i] = 1;
+//        for (int j = 0; j < i; j++) {
+//        if (arr[j] >= arr[i]) {
+//        dp[i] = Math.max(dp[i], dp[j] + 1);
+//        }
+//        }
+//        max = Math.max(max, dp[i]);
+//        }
+//        return max;
