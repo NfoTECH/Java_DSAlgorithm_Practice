@@ -19,80 +19,75 @@ package assessmentDay;
 //
 //        The TransactionException class should plent The constructor TransactionExceptions
 
+class TransactionException extends Exception{
+    private String errorCode;
 
-class DigitalWallet {
+    public TransactionException(String errorMessage, String errorCode) {
+        super(errorMessage);
+        this.errorCode = errorCode;
+    }
+
+    public String getErrorCode() {
+        return errorCode;
+    }
+}
+
+class DigitalWallet{
     private String walletId;
     private String userName;
     private String userAccessCode;
     private int walletBalance;
-
-    public DigitalWallet(String walletId, String userName) {
+    public DigitalWallet(String walletId, String userName){
         this.walletId = walletId;
         this.userName = userName;
     }
-    public DigitalWallet(String walletId, String userName, String userAccessCode) {
+    public DigitalWallet(String walletId, String userName, String userAccessCode){
         this.walletId = walletId;
         this.userName = userName;
         this.userAccessCode = userAccessCode;
     }
-
-    public String getWalletId() {
-        return walletId;
+    public String getWalletId(){
+        return this.walletId;
+    }
+    public String getUsername(){
+        return this.userName;
+    }
+    public String getUserAccessToken(){
+        return this.userAccessCode;
     }
 
-    public String getUserAccessToken() {
-        return userAccessCode;
+    public int getWalletBalance(){
+        return this.walletBalance;
+    }
+    public void setWalletBalance(int walletBalance){
+        this.walletBalance =walletBalance;
+    }
+}
+class DigitalWalletTransaction{
+    public void addMoney(DigitalWallet digitalWallet, int amount) throws TransactionException{
+        if(digitalWallet.getUserAccessToken() ==null){
+            throw new TransactionException("User not authorized", "USER_NOT_AUTHORIZED");
+        }
+        if(amount <=0){
+            throw new TransactionException("Amount should be greater than zero", "INVALID_AMOUNT");
+        }
+        int cBalance = digitalWallet.getWalletBalance();
+        cBalance+=amount;
+        digitalWallet.setWalletBalance(cBalance);
     }
 
-    public int getWalletBalance() {
-        return walletBalance;
-    }
-
-    public void setWalletBalance(int walletBalance) {
-        this.walletBalance = walletBalance;
-    }
-
-    class DigitalWalletTransaction {
-        public void addMoney(DigitalWallet digitalWallet, int amount) throws TransactionException {
-            if (digitalWallet.getUserAccessToken() == null) {
-                throw new TransactionException("User not authorized", "USER_NOT_AUTHORIZED");
-            }
-            if (amount <= 0) {
-                throw new TransactionException("Amount should be greater than zero", "INVALID_AMOUNT");
-            }
-            digitalWallet.setWalletBalance(amount);
+    public void payMoney(DigitalWallet digitalWallet, int amount) throws TransactionException{
+        if(digitalWallet.getUserAccessToken() ==null){
+            throw new TransactionException("User not authorized", "USER_NOT_AUTHORIZED");
         }
-
-        public void payMoney (DigitalWallet digitalWallet, int amount) throws TransactionException {
-            if (digitalWallet.getUserAccessToken() == null) {
-                throw new TransactionException("User not authorized", "USER_NOT_AUTHORIZED");
-            }
-            if (amount <= 0) {
-                throw new TransactionException("Amount should be greater than zero", "INVALID_AMOUNT");
-            }
-            if (amount > digitalWallet.getWalletBalance()) {
-                throw new TransactionException("Insufficient balance", "INVALID_AMOUNT");
-            }
-            digitalWallet.setWalletBalance(amount);
+        if(amount <=0){
+            throw new TransactionException("Amount should be greater than zero", "INVALID_AMOUNT");
         }
-    }
-
-
-    class TransactionException extends Exception {
-        private String errorCode;
-        private String errorMessage;
-
-        public TransactionException(String errorMessage, String errorCode) {
-            this.errorMessage = errorMessage;
-            this.errorCode = errorCode;
+        if(digitalWallet.getWalletBalance()-amount < 0){
+            throw new TransactionException("Insufficient balance", "INSUFFICIENT_BALANCE");
         }
-
-        public String getErrorCode() {
-            return errorCode;
-        }
-
-        public String getErrorMessage() {
-            return errorMessage;
-        }
+        int cBalance = digitalWallet.getWalletBalance();
+        cBalance-=amount;
+        digitalWallet.setWalletBalance(cBalance);
     }
 }
