@@ -40,7 +40,11 @@ public class FetchItemsToDisplay {
     public static List<String> fetchItemsToDisplay(List<List<String>> items, int sortParameter, int sortOrder, int X) {
         List<String> ret = new ArrayList<>();
         if (sortOrder == 0) {
-            items.sort(Comparator.comparingInt(o -> Integer.parseInt(o.get(sortParameter))));
+            try {
+                items.sort(Comparator.comparingInt(o -> Integer.parseInt(o.get(sortParameter))));
+            } catch (NumberFormatException e) {
+                items.sort(Comparator.comparing(o -> o.get(sortParameter)));
+            }
         } else {
             try {
                 items.sort((o1, o2) -> Integer.parseInt(o2.get(sortParameter)) - Integer.parseInt(o1.get(sortParameter)));
