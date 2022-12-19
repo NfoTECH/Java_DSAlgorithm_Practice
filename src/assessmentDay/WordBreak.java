@@ -53,8 +53,9 @@ public class WordBreak {
 
     public static void main(String[] args) {
         WordBreak wb = new WordBreak();
-        System.out.println(wb.wordBreak("leetcode", List.of("leet", "code")));
-        System.out.println(wb.wordBreak("applepenapple", List.of("apple", "pen")));
-        System.out.println(wb.wordBreak("catsandog", List.of("cats", "dog", "sand", "and", "cat")));
+        System.out.println(wb.wordBreak("leetcode", List.of("leet", "code"))); //output: true
+        System.out.println(wb.wordBreak("applepenapple", List.of("apple", "pen"))); //output: true
+        System.out.println(wb.wordBreak(
+                "catsandog", List.of("cats", "dog", "sand", "and", "cat"))); //output: false because "og" is not in the dictionary
     }
 }
