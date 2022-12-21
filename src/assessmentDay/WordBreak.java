@@ -36,19 +36,30 @@ import java.util.List;
 import java.util.Set;
 
 public class WordBreak {
+
+//    PSEUDOCODE
+//    Create a 1D dp array of size N + 1, where N is the size of S.
+//    Consider two pointers i and j, where i refers the starting of the substring and j represents the ending of the substring.
+//    Run two nested loop, i = 0 till N + 1 and j = 0 to j = i:
+//    Check if dp[j] > 0 and the dictionary of words contains the substring, then mark dp[i] = True and break.
+//    Return dp[N] > 0
+
+
+    //USING DYNAMIC PROGRAMMING APPROACH.
+    //TIME COMPLEXITY = O(N^3);  SPACE COMPLEXITY = O(N)
     public boolean wordBreak(String s, List<String> wordDict) {
         Set<String> wordSet = new HashSet<>(wordDict);
-        boolean[] seperate = new boolean[s.length() + 1];
-        seperate[0] = true;
+        boolean[] dp = new boolean[s.length() + 1];
+        dp[0] = true;
         for (int i = 1; i <= s.length(); i++) {
             for (int j = 0; j < i; j++) {
-                if (seperate[j] && wordSet.contains(s.substring(j, i))) {
-                    seperate[i] = true;
+                if (dp[j] && wordSet.contains(s.substring(j, i))) {
+                    dp[i] = true;
                     break;
                 }
             }
         }
-        return seperate[s.length()];
+        return dp[s.length()];
     }
 
 
@@ -64,6 +75,8 @@ public class WordBreak {
 
 
 // METHOD 2 - ANOTHER WAY OF SOLVING THE ABOVE PROBLEM
+// USING THE BRUTE FORCE APPROACH
+// TIME COMPLEXITY = O(2^N); SPACE COMPLEXITY = O(N)
 
 
 //    public boolean wordBreak(String s, List<String> wordDict) {
