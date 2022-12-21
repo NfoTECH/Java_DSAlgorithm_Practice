@@ -38,18 +38,19 @@ import java.util.Set;
 public class WordBreak {
     public boolean wordBreak(String s, List<String> wordDict) {
         Set<String> wordSet = new HashSet<>(wordDict);
-        boolean[] dp = new boolean[s.length() + 1];
-        dp[0] = true;
+        boolean[] seperate = new boolean[s.length() + 1];
+        seperate[0] = true;
         for (int i = 1; i <= s.length(); i++) {
             for (int j = 0; j < i; j++) {
-                if (dp[j] && wordSet.contains(s.substring(j, i))) {
-                    dp[i] = true;
+                if (seperate[j] && wordSet.contains(s.substring(j, i))) {
+                    seperate[i] = true;
                     break;
                 }
             }
         }
-        return dp[s.length()];
+        return seperate[s.length()];
     }
+
 
     public static void main(String[] args) {
         WordBreak wb = new WordBreak();
@@ -59,3 +60,26 @@ public class WordBreak {
                 "catsandog", List.of("cats", "dog", "sand", "and", "cat"))); //output: false because "og" is not in the dictionary
     }
 }
+
+
+
+// METHOD 2 - ANOTHER WAY OF SOLVING THE ABOVE PROBLEM
+
+
+//    public boolean wordBreak(String s, List<String> wordDict) {
+//        Set<String> set = new HashSet<>(wordDict);
+//        return wordBreak(s, set);
+//    }
+//
+//    private boolean wordBreak(String s, Set<String> set) {
+//        if (s.length() == 0) {
+//            return true;
+//        }
+//        for (int i = 1; i <= s.length(); i++) {
+//            if (set.contains(s.substring(0, i)) && wordBreak(s.substring(i), set)) {
+//                return true;
+//            }
+//        }
+//        return false;
+//
+//    }
