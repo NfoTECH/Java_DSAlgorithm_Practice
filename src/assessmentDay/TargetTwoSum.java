@@ -1,6 +1,9 @@
 package assessmentDay;
 
+import java.util.HashMap;
+
 public class TargetTwoSum {
+    // TIME COMPLEXITY: O(N^2); SPACE COMPLEXITY: O(1)
     public int[] twoSum (int[] inputArray, int targetSum) {
         int[] result = new int[2];
         for (int i = 0; i < inputArray.length; i++) {
@@ -13,6 +16,19 @@ public class TargetTwoSum {
         }
         return result;
     }
+
+   // OPTIMIZED SOLUTION WITH TIME COMPLEXITY OF O(N); SPACE COMPLEXITY = O(1)
+//    public static int[] twoSum(int[] inputArray, int targetSum) {
+//        HashMap<Integer, Integer> map = new HashMap<>();
+//        for (int i = 0; i < inputArray.length; i++) {
+//            int complement = targetSum - inputArray[i];
+//            if (map.containsKey(complement)) {
+//                return new int[]{complement, inputArray[i]};
+//            }
+//            map.put(inputArray[i], i);
+//        }
+//        return new int[0];
+//    }
 
     public static void main(String[] args) {
         TargetTwoSum targetTwoSum = new TargetTwoSum();
