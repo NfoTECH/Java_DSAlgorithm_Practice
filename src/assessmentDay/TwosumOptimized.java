@@ -1,8 +1,11 @@
 package assessmentDay;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class TwosumOptimized {
+
+    //TIME COMPLEXITY O(N), SPACE COMPLEXITY O(1)
     public static int[] twoSum(int[] inputArray, int targetSum) {
         HashMap<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < inputArray.length; i++) {
@@ -13,6 +16,19 @@ public class TwosumOptimized {
             map.put(inputArray[i], i);
         }
         return new int[0];
+    }
+
+    //TIME COMPLEXITY O(N), SPACE COMPLEXITY O(1)
+    public int[] twoSum2(int[] numbers, int target) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < numbers.length; i++) {
+            int x = numbers[i];
+            if (map.containsKey(target - x)) {
+                return new int[] { map.get(target - x) + 1, i + 1 };
+            }
+            map.put(x, i);
+        }
+        throw new IllegalArgumentException("No two sum solution");
     }
 
     public static void main(String[] args) {
