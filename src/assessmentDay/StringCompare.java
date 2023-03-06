@@ -25,7 +25,7 @@ package assessmentDay;
 //
 //        For the second line, write Yes if  is lexicographically greater than  otherwise print No instead.
 //
-//        For the third line, capitalize the first letter in both  and  and print them on a single line, separated by a space.
+//        For the third line, capitalize the first letter in both  and print them on a single line, separated by a space.
 //
 //        Sample Input 0
 //
@@ -49,7 +49,10 @@ package assessmentDay;
 //
 //        When sorted alphabetically/lexicographically, "hello" precedes "java"; therefore,  is not greater than  and the answer is No.
 //
-//        When you capitalize the first letter of both  and  and then print them separated by a space, you get "Hello Java".
+//        When you capitalize the first letter of both  and then print them separated by a space, you get "Hello Java".
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class StringCompare {
     public static int StringCompare(String word) {

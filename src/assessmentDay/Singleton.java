@@ -5,6 +5,7 @@ package assessmentDay;
 public class Singleton {
     private static Singleton instance = null;
     private Singleton() {
+        // private so it can not be instantiated from outside the class
     }
     public static Singleton getInstance() {
         if (instance == null) {
