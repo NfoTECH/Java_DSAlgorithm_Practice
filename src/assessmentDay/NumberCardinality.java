@@ -34,15 +34,15 @@ package assessmentDay;
 //
 //        Output odd
 public class NumberCardinality {
-    public static String number_cardinality(int number) {
+    public static String number_cardinality(int my_number) {
         // write your code here
-        if (number % 10 == 0) {
+        if (my_number % 10 == 0) {
             return "zero";
         }
-        if (number % 10 == 5) {
+        if (my_number % 10 == 5) {
             return "five";
         }
-        if (number % 2 == 0) {
+        if (my_number % 2 == 0) {
             return "even";
         }
         return "odd";
