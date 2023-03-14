@@ -28,21 +28,24 @@ package assessmentDay;
 //
 //        For the above example, the correct output would be 11, 31
 
+import java.util.Arrays;
+
 public class FindSumPair {
-    public static int findSumPair(int[] numbers, int k) {
+    public static int[] findSumPair(int[] numbers, int k) {
         for (int i = 0; i < numbers.length; i++) {
             for (int j = i + 1; j < numbers.length; j++) {
                 if (numbers[i] + numbers[j] == k) {
-                    return i;
+                    return new int[]{i, j};
                 }
             }
         }
-        return -1;
+        return new int[2];
+        // return new int[]{-1, -1};
     }
 
     public static void main(String[] args) {
         int[] numbers = {1, 5, 8, 1, 2};
-        int k = 13;
-        System.out.println(findSumPair(numbers, k));
+        int k = 7;
+        System.out.println(Arrays.toString(findSumPair(numbers, k)));
     }
 }
