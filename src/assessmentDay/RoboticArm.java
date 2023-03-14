@@ -28,10 +28,10 @@ package assessmentDay;
 public class RoboticArm {
     public static String solve (int width, int height, int length, int mass) {
         int volume = width * height * length;
-        if (volume < 1_000_000 && length < 150 && width < 150 && height < 150 && mass < 20) {
+        if ((volume < 1_000_000 && length < 150 && width < 150 && height < 150) && mass < 20) {
             return "STANDARD";
         }
-        if (volume >= 1_000_000 && length >= 150 && width >= 150 && height >= 150 && mass >= 20) {
+        if ((volume >= 1_000_000 || length >= 150 || width >= 150 || height >= 150) && mass >= 20) {
             return "REJECTED";
         }
         return "SPECIAL";
