@@ -20,46 +20,43 @@ package assessmentDay;
 //
 //        Examples:
 //
-//        Input: [Madeline Choi 5 5 6, Ethan Wyatt 8 9 10] Output: Madeline Choi-5; Ethan Wyatt-9;
-//
+//        Input: [Madeline Choi 5 5 6, Ethan Wyatt 8 9 10]
+//        Output: Madeline Choi-5; Ethan Wyatt-9;
+
 //        Input: [Denver Wagner 6 7 8, Ernie Gibbs 11 2]
-//
 //        Output: Denver Wagner-7; Ernie Gibts-2;
-//
+
 //        Input: [Kim Ramos: 4 5 6,Giovanni Landry - 10 10;]
 //        Output: Kim Ramos-5; Giovanni Landry-10;]
 
-//      Input: [Henrietta Moon:5;5;8,Edwin Bonilla 100;]
+//        Input: [Henrietta Moon:5;5;8,Edwin Bonilla 100;]
 //        Output: Henrietta Moon-6; Edwin Bonilla-0;
 
-public class TeacherStudentScore {
-    public static String newList (String[] students) {
-        java.util.List<String> list = new java.util.ArrayList<>();
-        for (String student : students) {
-            String[] arr = student.split(" ");
-            int sum = 0;
+public class TeacherStudentScore_2 {
+    public static String calculateAverageMarks(String[] students) {
+        java.util.List<String> studentList = new java.util.ArrayList<>();
+        for (int i = 0; i < students.length; i++) {
+            String studentName = "";
             int count = 0;
-            for (int i = 1; i < arr.length; i++) {
-                try {
-                    int mark = Integer.parseInt(arr[i]);
-                    if (mark >= 1 && mark <= 10) {
-                        sum += mark;
-                        count++;
-                    }
-                } catch (NumberFormatException e) {
-                    // Ignore non-numeric values
+            int sumScore = 0;
+
+            java.util.regex.Matcher match = java.util.regex.Pattern.compile("\\d+").matcher(students[i]);
+            while (match.find()) {
+                int score = Integer.parseInt(match.group());
+                if (score <= 10 && score >= 1) {
+                    count += 1;
+                    sumScore += score;
                 }
             }
-            int avg = 0;
-            if (sum > 0 && count > 0) {
-                avg = sum / count;
+
+            java.util.regex.Matcher match2 = java.util.regex.Pattern.compile("[a-zA-Z]+").matcher(students[i]);
+            while (match2.find()) {
+                studentName += match2.group() + " ";
             }
-            list.add(arr[0] + " " + arr[1].replace(":", "") + "-" + avg + ";");
+            java.lang.String avgScore = count == 0 ? "0" : java.lang.String.valueOf((int) java.lang.Math.floor(sumScore / count));
+            studentList.add(studentName.trim() + "-" + avgScore);
         }
-        if (list.contains("Henrietta Moon5;5;8-0;")) {
-            list.set(list.indexOf("Henrietta Moon5;5;8-0;"), "Henrietta Moon-6;");
-        }
-        return String.join("", list);
+        return String.join(";", studentList) + ";";
     }
 
     public static void main(String[] args) {
@@ -67,12 +64,11 @@ public class TeacherStudentScore {
         String[] Input2 = {"Denver Wagner 6 7 8", "Ernie Gibbs 11 2"};
         String[] Input3 = {"Kim Ramos: 4 5 6", "Giovanni Landry - 10 10"};
         String[] Input4 = {"Henrietta Moon:5;5;8","Edwin Bonilla 100;"};
-        // Expected output4: Henrietta Moon-6; Edwin Bonilla-0;
 
-        System.out.println(newList(input1));
-        System.out.println(newList(Input2));
-        System.out.println(newList(Input3));
-        System.out.println(newList(Input4));
+        System.out.println(calculateAverageMarks(input1));
+        System.out.println(calculateAverageMarks(Input2));
+        System.out.println(calculateAverageMarks(Input3));
+        System.out.println(calculateAverageMarks(Input4));
     }
 }
 
