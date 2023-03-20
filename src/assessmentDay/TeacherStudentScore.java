@@ -32,20 +32,20 @@ package assessmentDay;
 //        Input: [Henrietta Moon:5;5;8,Edwin Bonilla 100;]
 //        Output: Henrietta Moon-6; Edwin Bonilla-0;
 
-public class TeacherStudentScore_2 {
+public class TeacherStudentScore {
     public static String calculateAverageMarks(String[] students) {
         java.util.List<String> studentList = new java.util.ArrayList<>();
         for (int i = 0; i < students.length; i++) {
             String studentName = "";
             int count = 0;
-            int sumScore = 0;
+            int scores = 0;
 
             java.util.regex.Matcher match = java.util.regex.Pattern.compile("\\d+").matcher(students[i]);
             while (match.find()) {
                 int score = Integer.parseInt(match.group());
                 if (score <= 10 && score >= 1) {
                     count += 1;
-                    sumScore += score;
+                    scores += score;
                 }
             }
 
@@ -53,7 +53,7 @@ public class TeacherStudentScore_2 {
             while (match2.find()) {
                 studentName += match2.group() + " ";
             }
-            java.lang.String avgScore = count == 0 ? "0" : java.lang.String.valueOf((int) java.lang.Math.floor(sumScore / count));
+            java.lang.String avgScore = count == 0 ? "0" : java.lang.String.valueOf((int) java.lang.Math.floor(scores / count));
             studentList.add(studentName.trim() + "-" + avgScore);
         }
         return String.join(";", studentList) + ";";
