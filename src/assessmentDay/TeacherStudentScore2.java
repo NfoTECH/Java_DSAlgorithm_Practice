@@ -28,16 +28,21 @@ package assessmentDay;
 //        Input: [Henrietta Moon:5;5;8,Edwin Bonilla 100;]
 //        Output: Henrietta Moon-6; Edwin Bonilla-0;
 
+import java.util.List;
+import java.util.ArrayList;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+
 public class TeacherStudentScore2 {
     public static String calculateAverageMarks(String[] students) {
-        java.util.List<String> list = new java.util.ArrayList<>();
+        List<String> list = new ArrayList<>();
         for (int i = 0; i < students.length; i++) {
             String name = "";
             int sum = 0;
             int count = 0;
 
-            java.util.regex.Pattern pattern = java.util.regex.Pattern.compile("\\d+");
-            java.util.regex.Matcher matcher = pattern.matcher(students[i]);
+            Pattern pattern = java.util.regex.Pattern.compile("\\d+");
+            Matcher matcher = pattern.matcher(students[i]);
             while (matcher.find()) {
                 int num = Integer.parseInt(matcher.group());
                 if (num >= 0 && num <= 10) {
@@ -46,17 +51,16 @@ public class TeacherStudentScore2 {
                 }
             }
 
-            java.util.regex.Pattern pattern2 = java.util.regex.Pattern.compile("[a-zA-Z]+");
-            java.util.regex.Matcher matcher2 = pattern2.matcher(students[i]);
+            Pattern pattern2 = java.util.regex.Pattern.compile("[a-zA-Z]+");
+            Matcher matcher2 = pattern2.matcher(students[i]);
             while (matcher2.find()) {
                 name += matcher2.group() + " ";
             }
-            java.lang.String result = count == 0 ? "0" : java.lang.String.valueOf((int) java.lang.Math.floor(sum / count));
+            String result = count == 0 ? "0" : String.valueOf((int) Math.floor(sum / count));
             list.add(name.trim() + "-" + result);
         }
         return String.join(";", list) + ";";
     }
-
     public static void main(String[] args) {
         String[] input1 = {"Madeline Choi 5 5 6", "Ethan Wyatt 8 9 10"};
         String[] Input2 = {"Denver Wagner 6 7 8", "Ernie Gibbs 11 2"};
@@ -67,9 +71,7 @@ public class TeacherStudentScore2 {
         System.out.println(calculateAverageMarks(Input3));
         System.out.println(calculateAverageMarks(Input4));
     }
-
 }
-
 //    This Java solution takes an array of student records as input and returns a string
 //    that contains each student's name and their average marks.
 //    The input array contains strings that represent each student record in the following format:
