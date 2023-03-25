@@ -8,16 +8,26 @@ public class removeDuplicate {
         System.out.println(removeDuplicates(word));
     }
 
-    static String removeDuplicates (String word) {
+    static String removeDuplicates(String word) {
         String result = "";
         word = word.toLowerCase();
         for (int i = 0; i < word.length(); i++) {
-            if (result.indexOf(word.charAt(i)) == -1) {
-                result += word.charAt(i);
-            }
+            char currentChar = word.charAt(i);
+            if (!result.contains(String.valueOf(currentChar))) result += currentChar;
         }
         return result;
     }
+
+//    static String removeDuplicates (String word) {
+//        String result = "";
+//        word = word.toLowerCase();
+//        for (int i = 0; i < word.length(); i++) {
+//            if (result.indexOf(word.charAt(i)) == -1) {
+//                result += word.charAt(i);
+//            }
+//        }
+//        return result;
+//    }
 }
 
 
