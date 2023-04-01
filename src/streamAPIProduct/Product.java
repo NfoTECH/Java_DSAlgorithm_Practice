@@ -1,7 +1,4 @@
-package streams;
-
-import java.util.ArrayList;
-import java.util.List;
+package streamAPIProduct;
 
 public class Product{
     int id;

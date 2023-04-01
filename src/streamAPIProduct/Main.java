@@ -1,4 +1,4 @@
-package streams;
+package streamAPIProduct;
 
 import java.util.List;
 import java.util.function.BiFunction;
