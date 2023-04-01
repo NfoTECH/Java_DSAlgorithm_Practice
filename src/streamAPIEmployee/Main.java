@@ -1,9 +1,8 @@
 package streamAPIEmployee;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Main {
     static List<Employee> employees = new ArrayList<>();
@@ -15,7 +14,7 @@ public class Main {
                 new Employee("Pelumi", "Ogunwole", 7263.0, List.of("Project1", "Project3"))
         );
         employees.add(
-                new Employee("Samson", "Ohenemiyeruwe", 4947.0, List.of("Project2", "Project3"))
+                new Employee("Samson", "Oghenemiyeruwe", 4947.0, List.of("Project2", "Project3"))
         );
         employees.add(
                 new Employee("Ikechukwu", "Iwunna", 10500.80, List.of("Project3", "Project4"))
@@ -28,8 +27,7 @@ public class Main {
     public static void main(String[] args) {
 
         //forEach: Print all the employees on the console
-        employees.stream()
-                .forEach(employee -> System.out.println(employee));
+        employees.forEach(System.out::println);
 
 
         //map: Increment the salary of all employees by 10%
@@ -76,5 +74,52 @@ public class Main {
                 .flatMap(strings -> strings.stream())
                 .collect(Collectors.joining(","));
         System.out.println(employeeProjects);
+
+
+        //skip and limit: Short circuit operations
+        List<Employee> shortCircuit = employees.stream()
+                .skip(1)
+                .limit(2)
+                .collect(Collectors.toList());
+        System.out.println(shortCircuit);
+
+
+        //Finite data
+        Stream.generate(Math::random)
+                .limit(3)
+                .forEach(System.out::println);
+
+
+        //StartsWith
+        List<Employee> firstNameStartsWith = employees.stream()
+                .filter(employee -> employee.getLastName()
+                        .startsWith("O"))
+                .toList();
+        System.out.println(firstNameStartsWith);
+
+
+        //sorted
+        List<Employee> sortedEmployees =
+                employees.stream()
+                        .sorted(((o1, o2) -> o1.getFirstName()
+                                .compareToIgnoreCase(o2.getFirstName())))
+                        .toList();
+        System.out.println(sortedEmployees);
+
+
+        //min or max
+        Employee maxSalary = employees
+                .stream()
+                .max(Comparator.comparing(Employee::getSalary))
+                .orElseThrow(NoSuchElementException::new);
+        System.out.println(maxSalary);
+
+
+        //reduce
+        Double totalSalary = employees
+                .stream()
+                .map(Employee::getSalary)
+                .reduce(0.0, Double::sum);
+        System.out.println(totalSalary);
     }
 }
