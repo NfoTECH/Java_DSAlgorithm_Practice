@@ -29,7 +29,6 @@ public class BinarySearch {
         return search(arr, target, midIndex + 1, end);
     }
 
-
     public static void main(String[] args) {
         BinarySearch binarySearch = new BinarySearch();
         int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9};
