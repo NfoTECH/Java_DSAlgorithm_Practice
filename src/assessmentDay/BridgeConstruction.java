@@ -30,15 +30,11 @@ import java.util.List;
 //        Example #1
 //
 //        Input
-//
 //        3
-//
 //        Output
-//
 //        2
 //
 //        Expination: The first box can be put above the third box. The second box should be put alone in one pile
-//
 //        Example #2
 //        Input : 0, 0, 10
 //        Output : 2

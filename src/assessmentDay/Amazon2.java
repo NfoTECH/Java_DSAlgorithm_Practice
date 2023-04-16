@@ -4,8 +4,10 @@ package assessmentDay;
 //
 //        Be are required to support the installation of a package and all of its dependent packages.
 //
-//        You have a package repository in which there are dependencies between packages for building like package: [A depends on 8] A has to be built before package B.
-//        If you are given dependencies between the packages and package name X, we have find the build order for X. 10 Here is an example of a package structure that we would need to install:
+//        You have a package repository in which there are dependencies between packages for building like package:
+//        [A depends on 8] A has to be built before package B.
+//        If you are given dependencies between the packages and package name X, we have find the build order for X.
+//        10 Here is an example of a package structure that we would need to install:
 //
 //        A depends on, C
 //
