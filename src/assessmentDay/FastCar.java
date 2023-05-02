@@ -1,21 +1,12 @@
 package assessmentDay;
 //
 //port java.io."; port java.util."
-//
-//        port java.util.concurrent. ThreadLocalRandom;
+//port java.util.concurrent. ThreadLocalRandom;
 //
 //class FastCar
-//
-//{
-//
 //    public static void main(String[] args)
-//
 //    This will create a list of 1000 cars with random speed between 55 and 228
-//
 //    List<Car> carlist=new ArrayList<>(); for (int i = 0; i < 1000; i++) carlist.add(new Car(ThreadLocalRandom.current.nextDouble(55, 220)));
-//
-//}
-//
 //    Car fastestCar - findFastestCar(carlist);
 //
 //        System.out.println("FASTEST CAR TOP SPEED fastestCar.getSpeed()); }
@@ -23,11 +14,8 @@ package assessmentDay;
 //// TODO: Implement this method
 //
 //private static Car FindFastestCar(List<Car> carlist)
-//
 //        Fastest Car
-//
 //        1. Read the following code and fill in the missing pieces necessary to make it compile, run and produce the correct result.
-//
 //        2. List the test scenarios, in comments, that you would execute for the findFastestCar() method.
 
 
