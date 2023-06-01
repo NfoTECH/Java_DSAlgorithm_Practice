@@ -19,11 +19,11 @@ public class UniqueCharacterSplit {
         return count;
     }
     public static int uniqueCombination(String str){
-        Set<Character> m = new HashSet<>();
-        for(Character character : str.toCharArray()){
-            m.add(character);
+        Set<Character> characters = new HashSet<>();
+        for(Character c : str.toCharArray()){
+            characters.add(c);
         }
-        return m.size();
+        return characters.size();
     }
 
 
