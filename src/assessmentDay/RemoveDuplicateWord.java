@@ -6,7 +6,7 @@ package assessmentDay;
 public class RemoveDuplicateWord {
     public static void main(String[] args) {
         String str = "Rose rose is red";
-        System.out.println(removeDuplicateWords(str));
+        System.out.println(removeDuplicateWords(str)); //output: rose is red
     }
 
     static String removeDuplicateWords(String str) {

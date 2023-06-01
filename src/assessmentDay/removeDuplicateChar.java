@@ -2,7 +2,7 @@ package assessmentDay;
 
 // Write an algorithm to remove removeDuplicate character in the following word ("Charismatic") and print the result
 
-public class removeDuplicate {
+public class removeDuplicateChar {
     public static void main(String[] args) {
         String word = "Charismatic";
         System.out.println(removeDuplicates(word));
