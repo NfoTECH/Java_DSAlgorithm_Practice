@@ -2,7 +2,7 @@ package assessmentDay;
 
 import java.util.*;
 
-//Write a Java programme to print the report of services performance  that are reused on a platform
+//Write a Java programme to print the report of services performance that are reused on a platform
 //        NOTE: Assume that there are 30 services that are running on the platform.
 //        Repost should consist the percentage of each service usage in descending order.
 
