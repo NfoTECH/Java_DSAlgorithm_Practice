@@ -33,7 +33,7 @@ public class CountNumberOccurrence {
             // Check if the current character is a digit
             if(Character.isDigit(c)){
                 // If the current character is a digit, convert it to an integer
-                // i.e if c = '5', num = 5
+                // i.e. if c = '5', num = 5
                 int num = Character.getNumericValue(c);
                 // Add the digit to the map and increment its count
                 // This line of code adds num to the map if it's not already in there, and sets its value to 1.
