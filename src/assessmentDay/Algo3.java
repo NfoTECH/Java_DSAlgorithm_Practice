@@ -1,11 +1,5 @@
 package assessmentDay;//The marketing team at CodeSignal would like to know how many users there are in each Coding Score range, so that they can share that information on our website. They've askes you to create a report containing that information.
-//
-//        README
-//
-//        Your Mission
-//
-//        SETTINGS
-//
+
 //        As input, you are given a list of scores. Coding Score can be anywhere between 300 and 850. For the purpose of this task, levels are defined in the following way:
 //
 //        Poor: 300-599
