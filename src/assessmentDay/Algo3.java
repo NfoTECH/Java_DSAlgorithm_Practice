@@ -16,7 +16,7 @@ package assessmentDay;//The marketing team at CodeSignal would like to know how 
 //
 //        [330, 723, 730, 825]
 //
-//        then you should return the following:
+//        Output
 //
 //        [Good "2", "Elite 1", "Poor 1"]
 
